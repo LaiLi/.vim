@@ -14,6 +14,8 @@ Plugin 'VundleVim/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 " Git plugin not hosted on GitHub
 Plugin 'plasticboy/vim-markdown'
+Plugin 'ctrlp.vim'
+Plugin 'The-NERD-tree'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -45,3 +47,7 @@ set nobackup
 set nowritebackup
 set noswapfile
 syntax on
+
+" NERDTree config
+map <F2> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
