@@ -12,10 +12,15 @@ Plugin 'VundleVim/Vundle.vim'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
-" Git plugin not hosted on GitHub
+
+" markdown highlight
 Plugin 'plasticboy/vim-markdown'
-Plugin 'ctrlp.vim'
+" code taglist
+Plugin 'majutsushi/tagbar'
+" 项目树
 Plugin 'The-NERD-tree'
+" 文件查找
+Plugin 'kien/ctrlp.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -50,3 +55,4 @@ syntax on
 
 " NERDTree config
 map <F2> :NERDTreeToggle<CR>
+nmap <F8> :TagbarToggle<CR>
