@@ -21,6 +21,8 @@ Plugin 'majutsushi/tagbar'
 Plugin 'The-NERD-tree'
 " 文件查找
 Plugin 'kien/ctrlp.vim'
+" 模糊搜索当前文件中的函数
+Plugin 'tacahiroy/ctrlp-funky'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -52,7 +54,12 @@ set nobackup
 set nowritebackup
 set noswapfile
 syntax on
+let mapleader=","
 
 " NERDTree config
 map <F2> :NERDTreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
+" CtrlPFunky config
+nnoremap <Leader>FF :CtrlPFunky<Cr>
+" narrow the list down with a word under cursor
+nnoremap <Leader>ff :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
