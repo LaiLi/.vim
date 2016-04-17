@@ -13,6 +13,14 @@ Plugin 'VundleVim/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 
+" better line numbers
+Plugin 'myusuf3/numbers.vim'
+" 语法检查
+Plugin 'scrooloose/syntastic'
+" 多行注释
+Plugin 'tpope/vim-commentary'
+" 多行光标
+Plugin 'terryma/vim-multiple-cursors'
 " markdown highlight
 Plugin 'plasticboy/vim-markdown'
 " code taglist
@@ -41,6 +49,8 @@ filetype plugin indent on    " required
 " Disable folding
 let g:vim_markdown_folding_disabled=1
 
+set lazyredraw
+set ttyfast
 set backspace=eol,indent,start
 set fileformats=unix,dos
 set tabstop=4
@@ -53,6 +63,7 @@ set mouse=a
 set nobackup
 set nowritebackup
 set noswapfile
+set hlsearch
 syntax on
 let mapleader=","
 let g:ctrlp_working_path_mode=0
@@ -64,3 +75,12 @@ nmap <F8> :TagbarToggle<CR>
 nnoremap <Leader>FF :CtrlPFunky<Cr>
 " narrow the list down with a word under cursor
 nnoremap <Leader>ff :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+" syntastic config
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
