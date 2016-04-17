@@ -55,6 +55,7 @@ set nowritebackup
 set noswapfile
 syntax on
 let mapleader=","
+let g:ctrlp_working_path_mode=0
 
 " NERDTree config
 map <F2> :NERDTreeToggle<CR>
