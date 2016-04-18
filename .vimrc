@@ -50,14 +50,15 @@ filetype plugin indent on    " required
 let g:vim_markdown_folding_disabled=1
 
 " theme
-set background=dark
-colorscheme desert
+syntax enable
+syntax on
 
 " set mark column color
-hi! link SignColumn   LineNr
-hi! link ShowMarksHLl DiffAdd
-hi! link ShowMarksHLu DiffChange
-
+"hi! link SignColumn   LineNr
+"hi! link ShowMarksHLl DiffAdd
+"hi! link ShowMarksHLu DiffChange
+hi CursorLineNr ctermfg=gray
+hi LineNr ctermfg=DarkCyan ctermbg=DarkGray
 " status line
 set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
 set laststatus=2   " Always show the status line - use 2 lines for the status bar
@@ -77,7 +78,6 @@ set nobackup
 set nowritebackup
 set noswapfile
 set hlsearch
-syntax on
 let mapleader=","
 let g:ctrlp_working_path_mode=0
 
