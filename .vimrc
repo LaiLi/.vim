@@ -49,6 +49,19 @@ filetype plugin indent on    " required
 " Disable folding
 let g:vim_markdown_folding_disabled=1
 
+" theme
+set background=dark
+colorscheme desert
+
+" set mark column color
+hi! link SignColumn   LineNr
+hi! link ShowMarksHLl DiffAdd
+hi! link ShowMarksHLu DiffChange
+
+" status line
+set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
+set laststatus=2   " Always show the status line - use 2 lines for the status bar
+
 set lazyredraw
 set ttyfast
 set backspace=eol,indent,start
