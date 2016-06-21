@@ -52,6 +52,7 @@ let g:vim_markdown_folding_disabled=1
 " theme
 syntax enable
 syntax on
+au BufNewFile,BufRead *.thtml set filetype=php
 
 " set mark column color
 "hi! link SignColumn   LineNr
