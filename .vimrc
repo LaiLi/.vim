@@ -31,6 +31,9 @@ Plugin 'The-NERD-tree'
 Plugin 'kien/ctrlp.vim'
 " 模糊搜索当前文件中的函数
 Plugin 'tacahiroy/ctrlp-funky'
+" 自动补全插件
+"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Shougo/neocomplete.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -82,6 +85,8 @@ set hlsearch
 let mapleader=","
 let g:ctrlp_working_path_mode=0
 
+" neocomplete config
+let g:neocomplete#enable_at_startup = 1
 " NERDTree config
 map <F2> :NERDTreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
