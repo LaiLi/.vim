@@ -13,6 +13,10 @@ Plugin 'VundleVim/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 
+" ctrlsf.vim
+Plugin 'dyng/ctrlsf.vim'
+" vim-go
+Plugin 'fatih/vim-go'
 " better line numbers
 Plugin 'myusuf3/numbers.vim'
 " 语法检查
@@ -22,7 +26,7 @@ Plugin 'tpope/vim-commentary'
 " 多行光标
 Plugin 'terryma/vim-multiple-cursors'
 " markdown highlight
-Plugin 'plasticboy/vim-markdown'
+"Plugin 'plasticboy/vim-markdown'
 " code taglist
 Plugin 'majutsushi/tagbar'
 " 项目树
@@ -34,6 +38,8 @@ Plugin 'tacahiroy/ctrlp-funky'
 " 自动补全插件
 "Plugin 'Valloric/YouCompleteMe'
 Plugin 'Shougo/neocomplete.vim'
+" php未定义变量检查
+Plugin 'php_localvarcheck.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -67,14 +73,18 @@ hi LineNr ctermfg=DarkCyan ctermbg=DarkGray
 set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
 set laststatus=2   " Always show the status line - use 2 lines for the status bar
 
+"缩进
+filetype indent on
+set cindent 
+set smartindent 
+set autoindent 
+"使用tab而不是space
+set tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab
+
 set lazyredraw
 set ttyfast
 set backspace=eol,indent,start
 set fileformats=unix,dos
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set autoindent
 set number
 set pastetoggle=<F9>
 set mouse=a
@@ -82,6 +92,8 @@ set nobackup
 set nowritebackup
 set noswapfile
 set hlsearch
+set foldmethod=indent
+set foldlevelstart=99
 let mapleader=","
 let g:ctrlp_working_path_mode=0
 
@@ -103,3 +115,5 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+" 使用 ctrlsf.vim 插件在工程内全局查找光标所在关键字，设置快捷键。快捷键速记法：search in project
+nnoremap <Leader>sp :CtrlSF<CR>
