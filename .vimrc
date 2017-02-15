@@ -2,11 +2,10 @@
 call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
-
 " ctrlsf.vim
 Plug 'dyng/ctrlsf.vim'
 " vim-go
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 " better line numbers
 Plug 'myusuf3/numbers.vim'
 " 语法检查
@@ -30,6 +29,7 @@ Plug 'php_localvarcheck.vim'
 call plug#end()            " required
 
 " theme
+
 syntax enable
 syntax on
 au BufNewFile,BufRead *.thtml set filetype=php
