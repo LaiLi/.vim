@@ -1,33 +1,58 @@
-" Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
-call plug#begin('~/.vim/plugged')
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-" Make sure you use single quotes
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
 
 " ctrlsf.vim
-Plug 'dyng/ctrlsf.vim'
+Plugin 'dyng/ctrlsf.vim'
 " vim-go
-Plug 'fatih/vim-go'
+Plugin 'fatih/vim-go'
 " better line numbers
-Plug 'myusuf3/numbers.vim'
+Plugin 'myusuf3/numbers.vim'
 " 语法检查
-Plug 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 " 多行注释
-Plug 'tpope/vim-commentary'
+Plugin 'tpope/vim-commentary'
 " 多行光标
-Plug 'terryma/vim-multiple-cursors'
+Plugin 'terryma/vim-multiple-cursors'
 " 项目树
-Plug 'The-NERD-tree'
+Plugin 'The-NERD-tree'
 " 文件查找
-Plug 'kien/ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
 " 模糊搜索当前文件中的函数
-Plug 'tacahiroy/ctrlp-funky'
+Plugin 'tacahiroy/ctrlp-funky'
 " 自动补全插件
-Plug 'Shougo/neocomplete.vim'
+"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Shougo/neocomplete.vim'
 " php未定义变量检查
-Plug 'php_localvarcheck.vim'
+Plugin 'php_localvarcheck.vim'
 
 " All of your Plugins must be added before the following line
-call plug#end()            " required
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+" Disable folding
+let g:vim_markdown_folding_disabled=1
 
 " theme
 syntax enable
