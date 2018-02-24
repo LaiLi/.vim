@@ -22,8 +22,13 @@ Plug 'kien/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
 " 自动补全插件
 Plug 'Shougo/neocomplete.vim'
-" php未定义变量检查
-Plug 'php_localvarcheck.vim'
+" php_localvarcheck
+"Plug 'vim-scripts/php_localvarcheck.vim'
+Plug 'tpope/vim-surround'
+"Plug 'spf13/vim-autoclose'
+Plug 'tpope/vim-fugitive'
+" toml
+Plug 'cespare/vim-toml'
 
 " All of your Plugins must be added before the following line
 call plug#end()            " required
@@ -32,14 +37,13 @@ call plug#end()            " required
 
 syntax enable
 syntax on
-au BufNewFile,BufRead *.thtml set filetype=php
 
 " set mark column color
 hi CursorLineNr ctermfg=gray
 hi LineNr ctermfg=DarkCyan ctermbg=DarkGray
 " status line
-set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
 set laststatus=2   " Always show the status line - use 2 lines for the status bar
+set statusline=%t%m%r%h%w%=\ [%{&ff}]\ %y\ %l,%v,%L\ %p%%\ 
 
 "缩进
 filetype indent on
@@ -50,7 +54,7 @@ set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 set lazyredraw
 set ttyfast
 set backspace=eol,indent,start
-set fileformats=unix,dos
+set fileformats=unix
 set number
 set pastetoggle=<F9>
 set mouse=a
@@ -65,10 +69,12 @@ let g:ctrlp_working_path_mode=0
 
 " NERDTree config
 map <F2> :NERDTreeToggle<CR>
+nnoremap <F3> :NumbersToggle<CR>
 " CtrlPFunky config
-nnoremap <Leader>FF :CtrlPFunky<Cr>
+nnoremap <Leader>f :CtrlPFunky<Cr>
 " narrow the list down with a word under cursor
-nnoremap <Leader>ff :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+nnoremap <Leader>F :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+nnoremap <Leader>b :CtrlPBuffer<Cr>
 " syntastic config
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -79,9 +85,14 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+let g:syntastic_php_phpmd_post_args = "unusedcode"
+let g:syntastic_html_checkers = ['']
 
 " 使用 ctrlsf.vim 插件在工程内全局查找光标所在关键字，设置快捷键。快捷键速记法：search in project
-nnoremap <Leader>sp :CtrlSF<CR>
+nnoremap <Leader>ss :CtrlSF<CR>
+nnoremap <Leader>sd :CtrlSF 
+nnoremap <Leader>sf :execute 'CtrlSF' 'function\ ' . expand('<cword>') . '('<CR>
 
 "vim复制粘贴到剪切板
 map <c-c> "+y
@@ -160,5 +171,15 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 " vim-go sets
 let g:go_fmt_command = "goimports"
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
+
+let g:unite_force_overwrite_statusline = 0
+let g:vimfiler_force_overwrite_statusline = 0
+let g:vimshell_force_overwrite_statusline = 0
 
 autocmd! BufWritePost .vimrc source %
