@@ -6,8 +6,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'dyng/ctrlsf.vim'
 " vim-go
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-" better line numbers
-Plug 'myusuf3/numbers.vim'
 " 语法检查
 Plug 'scrooloose/syntastic'
 " 多行注释
@@ -22,18 +20,12 @@ Plug 'kien/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
 " 自动补全插件
 Plug 'Shougo/neocomplete.vim'
-" php_localvarcheck
-"Plug 'vim-scripts/php_localvarcheck.vim'
 Plug 'tpope/vim-surround'
-"Plug 'spf13/vim-autoclose'
-Plug 'tpope/vim-fugitive'
 " toml
 Plug 'cespare/vim-toml'
 
 " All of your Plugins must be added before the following line
 call plug#end()            " required
-
-" theme
 
 syntax enable
 syntax on
@@ -56,6 +48,7 @@ set ttyfast
 set backspace=eol,indent,start
 set fileformats=unix
 set number
+set relativenumber
 set pastetoggle=<F9>
 set mouse=a
 set nobackup
@@ -138,17 +131,6 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
-
-" AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
-
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplete#enable_auto_select = 1
-"let g:neocomplete#disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
